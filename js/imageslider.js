@@ -1,28 +1,26 @@
-const buttonStyles = `
-  background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
-`;
+const buttonStyles = `background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;`;
+const sliderStyles = `display: flex; flex-direction: row; align-items: center; width: 60%; margin: auto;`;
+const imageContainerStyles = `width: 100px; height: 100px; margin: 1em 1em 1em 1em; border:1px solid grey;`;
+const primaryImageContainerStyles = `width: 200px;height: 200px;margin: 1em 1em 1em 1em;`;
+const imageStyles = `height: 100%; max-width: 100%;`;
 
 let images = [];  // contains image controls
 let paths = []; // contains paths for images
 
-function createControls(paths, containerName){
-  const container = document.getElementById(containerName);
-  this.paths = paths;
+export function createControls(imagePaths, containerName){
+  let container = document.getElementById(containerName);
+  paths = imagePaths;
 
   //create overall slider control 
   let slider = document.createElement('div'); 
   slider.classList.add('slider-control');
+  slider.style.cssText = sliderStyles;
 
   // create and style left button and append to control so it is the 1st element < img img IMG img img >
   let leftButton = document.createElement('button');
+  leftButton.innerText = '<';
   leftButton.onclick = () => {
-    images = shiftIndexLeft(paths);
+    paths = shiftIndexLeft(paths);
     source_Images();
   };
   leftButton.style.cssText = buttonStyles;
@@ -30,12 +28,20 @@ function createControls(paths, containerName){
 
   // create a div and image for each element in images
   let counter = 0;
-  paths.array.forEach(e => {
+  paths.forEach(e => {
     let image_container = document.createElement('div');
-    image_container.classList.add('image-container');
 
+    if (counter === 2){
+      image_container.classList.add('primary-image-container');
+      image_container.style.cssText = primaryImageContainerStyles;
+    } else {
+      image_container.classList.add('image-container');
+      image_container.style.cssText = imageContainerStyles;
+    }
+    
     let image = document.createElement('img');
     image.classList.add('image');
+    image.style.cssText = imageStyles;
     image.id = `image-${counter}`;
     image.src = e;
     image.alt = 'image';
@@ -48,8 +54,9 @@ function createControls(paths, containerName){
   
   // create right control and append to container
   let rightButton = document.createElement('button');
+  rightButton.innerText = '>';
   rightButton.onclick = () => {
-    images = shiftIndexRight(paths);
+    paths = shiftIndexRight(paths);
     source_Images();
   };
 

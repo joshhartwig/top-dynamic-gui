@@ -4,13 +4,15 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Boilerplate ChangeMe</title>
+  <title>Dynamic Gui</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
-  <script src="scripts.js" defer></script>
+  <script src="scripts.js" type="module"></script>
+  <script src="./js/imageslider.js" type="module"></script>
 </head>
 <body>
+  
   <div class="menu">
     <div class="menu-item locations" id="locations-menu-id">
       <p class="list locations-title">Locations</p>
@@ -36,30 +38,7 @@
      controls are pure JS without any libraries. The first control above is the dynamic menu with drop downs. The second is the image slider below.
     </p>
   </div>
-  <div class="slider-control">
-    <div class="image-container">
-      <img src="" alt="" class="image" id="image-0">
-    </div>
-
-    <div class="image-container">
-      <img src="" alt="" class="image" id="image-1">
-    </div>
-
-    <button class="btn-control" id="btn-left"> < </button>
-
-    <div class="primary-image-container">
-      <img src="" alt="" class="image" id="image-2">
-    </div>
-
-    <button class="btn-control" id="btn-right"> > </button>
-    <div class="image-container">
-      <img src="" alt="" class="image" id="image-3">
-    </div>
-
-    <div class="image-container">
-      <img src="" alt="" class="image" id="image-4">
-    </div>
-  </div>
+  <div class="slider-container" id="slider-container"></div>
   
 </body>
 </html>
