@@ -43,6 +43,6 @@ function hideDepartmentMenu(){
 
 
 registerHandlers();
-createControls(paths, 'slider-container');
+createControls(paths, 'slider-container', true);
 
 

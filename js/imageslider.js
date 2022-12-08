@@ -7,7 +7,7 @@ const imageStyles = `height: 100%; max-width: 100%;`;
 let images = [];  // contains image controls
 let paths = []; // contains paths for images
 
-export function createControls(imagePaths, containerName){
+export function createControls(imagePaths, containerName, autoPlay){
   let container = document.getElementById(containerName);
   paths = imagePaths;
 
@@ -65,6 +65,15 @@ export function createControls(imagePaths, containerName){
 
   //append slider to container
   container.appendChild(slider);
+
+  // if autoplay is enabled, push the images through the slider automatically
+  if(autoPlay) {
+    setInterval(() => {
+      paths = shiftIndexRight(paths);
+      source_Images();
+    },5000)
+  };
+    
 }
 
 // shifts contents of array to left
